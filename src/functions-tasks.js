@@ -81,7 +81,7 @@ function getArgumentsCount(funcs) {
  *
  */
 function getPowerFunction(exponent) {
-  return function (x) {
+  return function power(x) {
     return x ** exponent;
   };
 }
@@ -121,7 +121,7 @@ function memoize(func) {
   let cachedResult;
   let isCached = false;
 
-  return function () {
+  return function start() {
     if (!isCached) {
       cachedResult = func();
       isCached = true;
@@ -190,7 +190,7 @@ function logger(/* func, logFunc */) {
  *   partialUsingArguments(fn, 'a','b','c','d')() => 'abcd'
  */
 function partialUsingArguments(fn, ...args1) {
-  return function (...args2) {
+  return function partialArguments(...args2) {
     return fn(...args1, ...args2);
   };
 }
@@ -214,7 +214,7 @@ function partialUsingArguments(fn, ...args1) {
  */
 function getIdGeneratorFunction(startFrom) {
   let currentId = startFrom - 1;
-  return function () {
+  return function getId() {
     currentId += 1;
     return currentId;
   };
